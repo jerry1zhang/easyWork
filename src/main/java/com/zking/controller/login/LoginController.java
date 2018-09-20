@@ -41,7 +41,8 @@ public class LoginController extends BaseController{
 	public String loginPage(){
 		return "login";
 	}
-	
+
+	//TODO 变成接口
 	@RequestMapping("/doLogin")
 	public String doLogin(){
 		if(getSession().getAttribute("User")==null){
