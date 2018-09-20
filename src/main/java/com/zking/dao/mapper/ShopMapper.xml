@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.ShopMapper">
+  <resultMap id="BaseResultMap" type="com.zking.pojo.Shop">
+    <id column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
+    <result column="shop_address" jdbcType="VARCHAR" property="shopAddress" />
+    <result column="shop_admin" jdbcType="VARCHAR" property="shopAdmin" />
+    <result column="shop_rs1" jdbcType="VARCHAR" property="shopRs1" />
+    <result column="shop_rs2" jdbcType="VARCHAR" property="shopRs2" />
+    <result column="shop_rs3" jdbcType="VARCHAR" property="shopRs3" />
+    <result column="shop_rs4" jdbcType="VARCHAR" property="shopRs4" />
+    <result column="shop_rs5" jdbcType="VARCHAR" property="shopRs5" />
+    <result column="shop_rs6" jdbcType="VARCHAR" property="shopRs6" />
+    <result column="shop_rs7" jdbcType="VARCHAR" property="shopRs7" />
+    <result column="shop_rs8" jdbcType="VARCHAR" property="shopRs8" />
+    <result column="shop_rs9" jdbcType="VARCHAR" property="shopRs9" />
+    <result column="shop_rs10" jdbcType="VARCHAR" property="shopRs10" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    shop_id, shop_name, shop_address, shop_admin, shop_rs1, shop_rs2, shop_rs3, shop_rs4, 
+    shop_rs5, shop_rs6, shop_rs7, shop_rs8, shop_rs9, shop_rs10
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from td_shop
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from td_shop
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.Shop">
+    insert into td_shop (shop_id, shop_name, shop_address, 
+      shop_admin, shop_rs1, shop_rs2, 
+      shop_rs3, shop_rs4, shop_rs5, 
+      shop_rs6, shop_rs7, shop_rs8, 
+      shop_rs9, shop_rs10)
+    values (#{shopId,jdbcType=INTEGER}, #{shopName,jdbcType=VARCHAR}, #{shopAddress,jdbcType=VARCHAR}, 
+      #{shopAdmin,jdbcType=VARCHAR}, #{shopRs1,jdbcType=VARCHAR}, #{shopRs2,jdbcType=VARCHAR}, 
+      #{shopRs3,jdbcType=VARCHAR}, #{shopRs4,jdbcType=VARCHAR}, #{shopRs5,jdbcType=VARCHAR}, 
+      #{shopRs6,jdbcType=VARCHAR}, #{shopRs7,jdbcType=VARCHAR}, #{shopRs8,jdbcType=VARCHAR}, 
+      #{shopRs9,jdbcType=VARCHAR}, #{shopRs10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.Shop">
+    insert into td_shop
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="shopName != null">
+        shop_name,
+      </if>
+      <if test="shopAddress != null">
+        shop_address,
+      </if>
+      <if test="shopAdmin != null">
+        shop_admin,
+      </if>
+      <if test="shopRs1 != null">
+        shop_rs1,
+      </if>
+      <if test="shopRs2 != null">
+        shop_rs2,
+      </if>
+      <if test="shopRs3 != null">
+        shop_rs3,
+      </if>
+      <if test="shopRs4 != null">
+        shop_rs4,
+      </if>
+      <if test="shopRs5 != null">
+        shop_rs5,
+      </if>
+      <if test="shopRs6 != null">
+        shop_rs6,
+      </if>
+      <if test="shopRs7 != null">
+        shop_rs7,
+      </if>
+      <if test="shopRs8 != null">
+        shop_rs8,
+      </if>
+      <if test="shopRs9 != null">
+        shop_rs9,
+      </if>
+      <if test="shopRs10 != null">
+        shop_rs10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="shopName != null">
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopAddress != null">
+        #{shopAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="shopAdmin != null">
+        #{shopAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs1 != null">
+        #{shopRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs2 != null">
+        #{shopRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs3 != null">
+        #{shopRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs4 != null">
+        #{shopRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs5 != null">
+        #{shopRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs6 != null">
+        #{shopRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs7 != null">
+        #{shopRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs8 != null">
+        #{shopRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs9 != null">
+        #{shopRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs10 != null">
+        #{shopRs10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.Shop">
+    update td_shop
+    <set>
+      <if test="shopName != null">
+        shop_name = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopAddress != null">
+        shop_address = #{shopAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="shopAdmin != null">
+        shop_admin = #{shopAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs1 != null">
+        shop_rs1 = #{shopRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs2 != null">
+        shop_rs2 = #{shopRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs3 != null">
+        shop_rs3 = #{shopRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs4 != null">
+        shop_rs4 = #{shopRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs5 != null">
+        shop_rs5 = #{shopRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs6 != null">
+        shop_rs6 = #{shopRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs7 != null">
+        shop_rs7 = #{shopRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs8 != null">
+        shop_rs8 = #{shopRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs9 != null">
+        shop_rs9 = #{shopRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="shopRs10 != null">
+        shop_rs10 = #{shopRs10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.Shop">
+    update td_shop
+    set shop_name = #{shopName,jdbcType=VARCHAR},
+      shop_address = #{shopAddress,jdbcType=VARCHAR},
+      shop_admin = #{shopAdmin,jdbcType=VARCHAR},
+      shop_rs1 = #{shopRs1,jdbcType=VARCHAR},
+      shop_rs2 = #{shopRs2,jdbcType=VARCHAR},
+      shop_rs3 = #{shopRs3,jdbcType=VARCHAR},
+      shop_rs4 = #{shopRs4,jdbcType=VARCHAR},
+      shop_rs5 = #{shopRs5,jdbcType=VARCHAR},
+      shop_rs6 = #{shopRs6,jdbcType=VARCHAR},
+      shop_rs7 = #{shopRs7,jdbcType=VARCHAR},
+      shop_rs8 = #{shopRs8,jdbcType=VARCHAR},
+      shop_rs9 = #{shopRs9,jdbcType=VARCHAR},
+      shop_rs10 = #{shopRs10,jdbcType=VARCHAR}
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </update>
+  <select id="allList" resultMap="BaseResultMap">
+    select
+    shop_id, shop_name, shop_address, shop_admin, shop_rs1, shop_rs2, shop_rs3, shop_rs4,
+    shop_rs5, shop_rs6, shop_rs7, shop_rs8, shop_rs9,
+    (SELECT CONCAT(b.first_,b.last_) FROM act_id_user b where b.id_=a.shop_admin) shop_rs10
+    from td_shop a
+    limit #{start},#{rows}
+  </select>
+  <select id="partList" resultMap="BaseResultMap">
+    select
+    shop_id, shop_name, shop_address, shop_admin, shop_rs1, shop_rs2, shop_rs3, shop_rs4,
+    shop_rs5, shop_rs6, shop_rs7, shop_rs8, shop_rs9,
+    (SELECT CONCAT(b.first_,b.last_) FROM act_id_user b where b.id_=a.shop_admin) shop_rs10
+    from td_shop a
+    where
+    <if test="selectType!=null and selectType!=''">
+    ${selectType} like #{selectValue}
+    </if>
+    limit #{start},#{rows}
+  </select>
+  <select id="listPage" resultType="java.lang.Integer">
+    select
+    sum(1)
+    from td_shop a
+    <if test="selectType!=null and selectType!=''">
+      where ${selectType} like #{selectValue}
+    </if>
+  </select>
+</mapper>

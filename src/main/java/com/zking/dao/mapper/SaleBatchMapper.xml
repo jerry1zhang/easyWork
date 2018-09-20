@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.SaleBatchMapper">
+  <resultMap id="BaseResultMap" type="com.zking.pojo.SaleBatch">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_type" jdbcType="INTEGER" property="orderType" />
+    <result column="repository_type" jdbcType="INTEGER" property="repositoryType" />
+    <result column="money" jdbcType="VARCHAR" property="money" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_id" jdbcType="VARCHAR" property="createId" />
+    <result column="order_rs1" jdbcType="VARCHAR" property="orderRs1" />
+    <result column="order_rs2" jdbcType="VARCHAR" property="orderRs2" />
+    <result column="order_rs3" jdbcType="VARCHAR" property="orderRs3" />
+    <result column="order_rs4" jdbcType="VARCHAR" property="orderRs4" />
+    <result column="order_rs5" jdbcType="VARCHAR" property="orderRs5" />
+    <result column="order_rs6" jdbcType="VARCHAR" property="orderRs6" />
+    <result column="order_rs7" jdbcType="VARCHAR" property="orderRs7" />
+    <result column="order_rs8" jdbcType="VARCHAR" property="orderRs8" />
+    <result column="order_rs9" jdbcType="VARCHAR" property="orderRs9" />
+    <result column="order_rs10" jdbcType="VARCHAR" property="orderRs10" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id, order_type, repository_type, money, create_time, create_id, order_rs1, 
+    order_rs2, order_rs3, order_rs4, order_rs5, order_rs6, order_rs7, order_rs8, order_rs9, 
+    order_rs10
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from td_s_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from td_s_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.SaleBatch">
+    insert into td_s_order (order_id, order_type, repository_type, 
+      money, create_time, create_id, 
+      order_rs1, order_rs2, order_rs3, 
+      order_rs4, order_rs5, order_rs6, 
+      order_rs7, order_rs8, order_rs9, 
+      order_rs10)
+    values (#{orderId,jdbcType=INTEGER}, #{orderType,jdbcType=INTEGER}, #{repositoryType,jdbcType=INTEGER}, 
+      #{money,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=VARCHAR}, 
+      #{orderRs1,jdbcType=VARCHAR}, #{orderRs2,jdbcType=VARCHAR}, #{orderRs3,jdbcType=VARCHAR}, 
+      #{orderRs4,jdbcType=VARCHAR}, #{orderRs5,jdbcType=VARCHAR}, #{orderRs6,jdbcType=VARCHAR}, 
+      #{orderRs7,jdbcType=VARCHAR}, #{orderRs8,jdbcType=VARCHAR}, #{orderRs9,jdbcType=VARCHAR}, 
+      #{orderRs10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.SaleBatch">
+    insert into td_s_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="repositoryType != null">
+        repository_type,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="orderRs1 != null">
+        order_rs1,
+      </if>
+      <if test="orderRs2 != null">
+        order_rs2,
+      </if>
+      <if test="orderRs3 != null">
+        order_rs3,
+      </if>
+      <if test="orderRs4 != null">
+        order_rs4,
+      </if>
+      <if test="orderRs5 != null">
+        order_rs5,
+      </if>
+      <if test="orderRs6 != null">
+        order_rs6,
+      </if>
+      <if test="orderRs7 != null">
+        order_rs7,
+      </if>
+      <if test="orderRs8 != null">
+        order_rs8,
+      </if>
+      <if test="orderRs9 != null">
+        order_rs9,
+      </if>
+      <if test="orderRs10 != null">
+        order_rs10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="repositoryType != null">
+        #{repositoryType,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs1 != null">
+        #{orderRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs2 != null">
+        #{orderRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs3 != null">
+        #{orderRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs4 != null">
+        #{orderRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs5 != null">
+        #{orderRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs6 != null">
+        #{orderRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs7 != null">
+        #{orderRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs8 != null">
+        #{orderRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs9 != null">
+        #{orderRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs10 != null">
+        #{orderRs10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.SaleBatch">
+    update td_s_order
+    <set>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="repositoryType != null">
+        repository_type = #{repositoryType,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs1 != null">
+        order_rs1 = #{orderRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs2 != null">
+        order_rs2 = #{orderRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs3 != null">
+        order_rs3 = #{orderRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs4 != null">
+        order_rs4 = #{orderRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs5 != null">
+        order_rs5 = #{orderRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs6 != null">
+        order_rs6 = #{orderRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs7 != null">
+        order_rs7 = #{orderRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs8 != null">
+        order_rs8 = #{orderRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs9 != null">
+        order_rs9 = #{orderRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRs10 != null">
+        order_rs10 = #{orderRs10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.SaleBatch">
+    update td_s_order
+    set order_type = #{orderType,jdbcType=INTEGER},
+      repository_type = #{repositoryType,jdbcType=INTEGER},
+      money = #{money,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_id = #{createId,jdbcType=VARCHAR},
+      order_rs1 = #{orderRs1,jdbcType=VARCHAR},
+      order_rs2 = #{orderRs2,jdbcType=VARCHAR},
+      order_rs3 = #{orderRs3,jdbcType=VARCHAR},
+      order_rs4 = #{orderRs4,jdbcType=VARCHAR},
+      order_rs5 = #{orderRs5,jdbcType=VARCHAR},
+      order_rs6 = #{orderRs6,jdbcType=VARCHAR},
+      order_rs7 = #{orderRs7,jdbcType=VARCHAR},
+      order_rs8 = #{orderRs8,jdbcType=VARCHAR},
+      order_rs9 = #{orderRs9,jdbcType=VARCHAR},
+      order_rs10 = #{orderRs10,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+
+</mapper>

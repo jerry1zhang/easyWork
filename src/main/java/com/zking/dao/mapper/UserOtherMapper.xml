@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.UserOtherMapper">
+  <resultMap id="BaseResultMap" type="com.zking.pojo.UserOther">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
+    <result column="rs1" jdbcType="VARCHAR" property="rs1" />
+    <result column="rs2" jdbcType="VARCHAR" property="rs2" />
+    <result column="rs3" jdbcType="VARCHAR" property="rs3" />
+    <result column="rs4" jdbcType="VARCHAR" property="rs4" />
+    <result column="rs5" jdbcType="VARCHAR" property="rs5" />
+    <result column="rs6" jdbcType="VARCHAR" property="rs6" />
+    <result column="rs7" jdbcType="VARCHAR" property="rs7" />
+    <result column="rs8" jdbcType="VARCHAR" property="rs8" />
+    <result column="rs9" jdbcType="VARCHAR" property="rs9" />
+    <result column="rs10" jdbcType="VARCHAR" property="rs10" />
+    <result column="ri1" jdbcType="INTEGER" property="ri1" />
+    <result column="ri2" jdbcType="INTEGER" property="ri2" />
+    <result column="ri3" jdbcType="INTEGER" property="ri3" />
+    <result column="ri4" jdbcType="INTEGER" property="ri4" />
+    <result column="ri5" jdbcType="INTEGER" property="ri5" />
+    <result column="ri6" jdbcType="INTEGER" property="ri6" />
+    <result column="ri7" jdbcType="INTEGER" property="ri7" />
+    <result column="ri8" jdbcType="INTEGER" property="ri8" />
+    <result column="ri9" jdbcType="INTEGER" property="ri9" />
+    <result column="ri10" jdbcType="INTEGER" property="ri10" />
+    <result column="rt1" jdbcType="TIMESTAMP" property="rt1" />
+    <result column="rt2" jdbcType="TIMESTAMP" property="rt2" />
+    <result column="rt3" jdbcType="TIMESTAMP" property="rt3" />
+    <result column="rt4" jdbcType="TIMESTAMP" property="rt4" />
+    <result column="rt5" jdbcType="TIMESTAMP" property="rt5" />
+    <result column="rt6" jdbcType="TIMESTAMP" property="rt6" />
+    <result column="rt7" jdbcType="TIMESTAMP" property="rt7" />
+    <result column="rt8" jdbcType="TIMESTAMP" property="rt8" />
+    <result column="rt9" jdbcType="TIMESTAMP" property="rt9" />
+    <result column="rt10" jdbcType="TIMESTAMP" property="rt10" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, last_time, rs1, rs2, rs3, rs4, rs5, rs6, rs7, rs8, rs9, rs10, ri1, ri2, 
+    ri3, ri4, ri5, ri6, ri7, ri8, ri9, ri10, rt1, rt2, rt3, rt4, rt5, rt6, rt7, rt8, 
+    rt9, rt10
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user_other
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_user_other
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.UserOther">
+    insert into tb_user_other (id, user_id, last_time, 
+      rs1, rs2, rs3, rs4, 
+      rs5, rs6, rs7, rs8, 
+      rs9, rs10, ri1, ri2, 
+      ri3, ri4, ri5, ri6, 
+      ri7, ri8, ri9, ri10, 
+      rt1, rt2, rt3, 
+      rt4, rt5, rt6, 
+      rt7, rt8, rt9, 
+      rt10)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{lastTime,jdbcType=TIMESTAMP}, 
+      #{rs1,jdbcType=VARCHAR}, #{rs2,jdbcType=VARCHAR}, #{rs3,jdbcType=VARCHAR}, #{rs4,jdbcType=VARCHAR}, 
+      #{rs5,jdbcType=VARCHAR}, #{rs6,jdbcType=VARCHAR}, #{rs7,jdbcType=VARCHAR}, #{rs8,jdbcType=VARCHAR}, 
+      #{rs9,jdbcType=VARCHAR}, #{rs10,jdbcType=VARCHAR}, #{ri1,jdbcType=INTEGER}, #{ri2,jdbcType=INTEGER}, 
+      #{ri3,jdbcType=INTEGER}, #{ri4,jdbcType=INTEGER}, #{ri5,jdbcType=INTEGER}, #{ri6,jdbcType=INTEGER}, 
+      #{ri7,jdbcType=INTEGER}, #{ri8,jdbcType=INTEGER}, #{ri9,jdbcType=INTEGER}, #{ri10,jdbcType=INTEGER}, 
+      #{rt1,jdbcType=TIMESTAMP}, #{rt2,jdbcType=TIMESTAMP}, #{rt3,jdbcType=TIMESTAMP}, 
+      #{rt4,jdbcType=TIMESTAMP}, #{rt5,jdbcType=TIMESTAMP}, #{rt6,jdbcType=TIMESTAMP}, 
+      #{rt7,jdbcType=TIMESTAMP}, #{rt8,jdbcType=TIMESTAMP}, #{rt9,jdbcType=TIMESTAMP}, 
+      #{rt10,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.UserOther">
+    insert into tb_user_other
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="lastTime != null">
+        last_time,
+      </if>
+      <if test="rs1 != null">
+        rs1,
+      </if>
+      <if test="rs2 != null">
+        rs2,
+      </if>
+      <if test="rs3 != null">
+        rs3,
+      </if>
+      <if test="rs4 != null">
+        rs4,
+      </if>
+      <if test="rs5 != null">
+        rs5,
+      </if>
+      <if test="rs6 != null">
+        rs6,
+      </if>
+      <if test="rs7 != null">
+        rs7,
+      </if>
+      <if test="rs8 != null">
+        rs8,
+      </if>
+      <if test="rs9 != null">
+        rs9,
+      </if>
+      <if test="rs10 != null">
+        rs10,
+      </if>
+      <if test="ri1 != null">
+        ri1,
+      </if>
+      <if test="ri2 != null">
+        ri2,
+      </if>
+      <if test="ri3 != null">
+        ri3,
+      </if>
+      <if test="ri4 != null">
+        ri4,
+      </if>
+      <if test="ri5 != null">
+        ri5,
+      </if>
+      <if test="ri6 != null">
+        ri6,
+      </if>
+      <if test="ri7 != null">
+        ri7,
+      </if>
+      <if test="ri8 != null">
+        ri8,
+      </if>
+      <if test="ri9 != null">
+        ri9,
+      </if>
+      <if test="ri10 != null">
+        ri10,
+      </if>
+      <if test="rt1 != null">
+        rt1,
+      </if>
+      <if test="rt2 != null">
+        rt2,
+      </if>
+      <if test="rt3 != null">
+        rt3,
+      </if>
+      <if test="rt4 != null">
+        rt4,
+      </if>
+      <if test="rt5 != null">
+        rt5,
+      </if>
+      <if test="rt6 != null">
+        rt6,
+      </if>
+      <if test="rt7 != null">
+        rt7,
+      </if>
+      <if test="rt8 != null">
+        rt8,
+      </if>
+      <if test="rt9 != null">
+        rt9,
+      </if>
+      <if test="rt10 != null">
+        rt10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null">
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rs1 != null">
+        #{rs1,jdbcType=VARCHAR},
+      </if>
+      <if test="rs2 != null">
+        #{rs2,jdbcType=VARCHAR},
+      </if>
+      <if test="rs3 != null">
+        #{rs3,jdbcType=VARCHAR},
+      </if>
+      <if test="rs4 != null">
+        #{rs4,jdbcType=VARCHAR},
+      </if>
+      <if test="rs5 != null">
+        #{rs5,jdbcType=VARCHAR},
+      </if>
+      <if test="rs6 != null">
+        #{rs6,jdbcType=VARCHAR},
+      </if>
+      <if test="rs7 != null">
+        #{rs7,jdbcType=VARCHAR},
+      </if>
+      <if test="rs8 != null">
+        #{rs8,jdbcType=VARCHAR},
+      </if>
+      <if test="rs9 != null">
+        #{rs9,jdbcType=VARCHAR},
+      </if>
+      <if test="rs10 != null">
+        #{rs10,jdbcType=VARCHAR},
+      </if>
+      <if test="ri1 != null">
+        #{ri1,jdbcType=INTEGER},
+      </if>
+      <if test="ri2 != null">
+        #{ri2,jdbcType=INTEGER},
+      </if>
+      <if test="ri3 != null">
+        #{ri3,jdbcType=INTEGER},
+      </if>
+      <if test="ri4 != null">
+        #{ri4,jdbcType=INTEGER},
+      </if>
+      <if test="ri5 != null">
+        #{ri5,jdbcType=INTEGER},
+      </if>
+      <if test="ri6 != null">
+        #{ri6,jdbcType=INTEGER},
+      </if>
+      <if test="ri7 != null">
+        #{ri7,jdbcType=INTEGER},
+      </if>
+      <if test="ri8 != null">
+        #{ri8,jdbcType=INTEGER},
+      </if>
+      <if test="ri9 != null">
+        #{ri9,jdbcType=INTEGER},
+      </if>
+      <if test="ri10 != null">
+        #{ri10,jdbcType=INTEGER},
+      </if>
+      <if test="rt1 != null">
+        #{rt1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt2 != null">
+        #{rt2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt3 != null">
+        #{rt3,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt4 != null">
+        #{rt4,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt5 != null">
+        #{rt5,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt6 != null">
+        #{rt6,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt7 != null">
+        #{rt7,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt8 != null">
+        #{rt8,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt9 != null">
+        #{rt9,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt10 != null">
+        #{rt10,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.UserOther">
+    update tb_user_other
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null">
+        last_time = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rs1 != null">
+        rs1 = #{rs1,jdbcType=VARCHAR},
+      </if>
+      <if test="rs2 != null">
+        rs2 = #{rs2,jdbcType=VARCHAR},
+      </if>
+      <if test="rs3 != null">
+        rs3 = #{rs3,jdbcType=VARCHAR},
+      </if>
+      <if test="rs4 != null">
+        rs4 = #{rs4,jdbcType=VARCHAR},
+      </if>
+      <if test="rs5 != null">
+        rs5 = #{rs5,jdbcType=VARCHAR},
+      </if>
+      <if test="rs6 != null">
+        rs6 = #{rs6,jdbcType=VARCHAR},
+      </if>
+      <if test="rs7 != null">
+        rs7 = #{rs7,jdbcType=VARCHAR},
+      </if>
+      <if test="rs8 != null">
+        rs8 = #{rs8,jdbcType=VARCHAR},
+      </if>
+      <if test="rs9 != null">
+        rs9 = #{rs9,jdbcType=VARCHAR},
+      </if>
+      <if test="rs10 != null">
+        rs10 = #{rs10,jdbcType=VARCHAR},
+      </if>
+      <if test="ri1 != null">
+        ri1 = #{ri1,jdbcType=INTEGER},
+      </if>
+      <if test="ri2 != null">
+        ri2 = #{ri2,jdbcType=INTEGER},
+      </if>
+      <if test="ri3 != null">
+        ri3 = #{ri3,jdbcType=INTEGER},
+      </if>
+      <if test="ri4 != null">
+        ri4 = #{ri4,jdbcType=INTEGER},
+      </if>
+      <if test="ri5 != null">
+        ri5 = #{ri5,jdbcType=INTEGER},
+      </if>
+      <if test="ri6 != null">
+        ri6 = #{ri6,jdbcType=INTEGER},
+      </if>
+      <if test="ri7 != null">
+        ri7 = #{ri7,jdbcType=INTEGER},
+      </if>
+      <if test="ri8 != null">
+        ri8 = #{ri8,jdbcType=INTEGER},
+      </if>
+      <if test="ri9 != null">
+        ri9 = #{ri9,jdbcType=INTEGER},
+      </if>
+      <if test="ri10 != null">
+        ri10 = #{ri10,jdbcType=INTEGER},
+      </if>
+      <if test="rt1 != null">
+        rt1 = #{rt1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt2 != null">
+        rt2 = #{rt2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt3 != null">
+        rt3 = #{rt3,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt4 != null">
+        rt4 = #{rt4,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt5 != null">
+        rt5 = #{rt5,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt6 != null">
+        rt6 = #{rt6,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt7 != null">
+        rt7 = #{rt7,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt8 != null">
+        rt8 = #{rt8,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt9 != null">
+        rt9 = #{rt9,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rt10 != null">
+        rt10 = #{rt10,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.UserOther">
+    update tb_user_other
+    set user_id = #{userId,jdbcType=VARCHAR},
+      last_time = #{lastTime,jdbcType=TIMESTAMP},
+      rs1 = #{rs1,jdbcType=VARCHAR},
+      rs2 = #{rs2,jdbcType=VARCHAR},
+      rs3 = #{rs3,jdbcType=VARCHAR},
+      rs4 = #{rs4,jdbcType=VARCHAR},
+      rs5 = #{rs5,jdbcType=VARCHAR},
+      rs6 = #{rs6,jdbcType=VARCHAR},
+      rs7 = #{rs7,jdbcType=VARCHAR},
+      rs8 = #{rs8,jdbcType=VARCHAR},
+      rs9 = #{rs9,jdbcType=VARCHAR},
+      rs10 = #{rs10,jdbcType=VARCHAR},
+      ri1 = #{ri1,jdbcType=INTEGER},
+      ri2 = #{ri2,jdbcType=INTEGER},
+      ri3 = #{ri3,jdbcType=INTEGER},
+      ri4 = #{ri4,jdbcType=INTEGER},
+      ri5 = #{ri5,jdbcType=INTEGER},
+      ri6 = #{ri6,jdbcType=INTEGER},
+      ri7 = #{ri7,jdbcType=INTEGER},
+      ri8 = #{ri8,jdbcType=INTEGER},
+      ri9 = #{ri9,jdbcType=INTEGER},
+      ri10 = #{ri10,jdbcType=INTEGER},
+      rt1 = #{rt1,jdbcType=TIMESTAMP},
+      rt2 = #{rt2,jdbcType=TIMESTAMP},
+      rt3 = #{rt3,jdbcType=TIMESTAMP},
+      rt4 = #{rt4,jdbcType=TIMESTAMP},
+      rt5 = #{rt5,jdbcType=TIMESTAMP},
+      rt6 = #{rt6,jdbcType=TIMESTAMP},
+      rt7 = #{rt7,jdbcType=TIMESTAMP},
+      rt8 = #{rt8,jdbcType=TIMESTAMP},
+      rt9 = #{rt9,jdbcType=TIMESTAMP},
+      rt10 = #{rt10,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="goodOut" name="商品出库" isExecutable="true" activiti:candidateStarterGroups="库管,a92ab458da6f49f199a1d4cab32ed057,7bbd201fb70c4300add6a1cd9f1d7558">
+    <userTask id="goodOut" name="商品发送到指定店铺" activiti:assignee="${kgUser}" activiti:candidateGroups="库管,a92ab458da6f49f199a1d4cab32ed057" activiti:dueDate="${duedate}"></userTask>
+    <userTask id="goodCheck" name="店员验收货物" activiti:assignee="${shopUser}" activiti:candidateGroups="a92ab458da6f49f199a1d4cab32ed057,7bbd201fb70c4300add6a1cd9f1d7558" activiti:dueDate="${duedate}"></userTask>
+    <sequenceFlow id="flow2" sourceRef="goodOut" targetRef="goodCheck"></sequenceFlow>
+    <endEvent id="endevent1" name="结束"></endEvent>
+    <sequenceFlow id="flow3" sourceRef="goodCheck" targetRef="endevent1"></sequenceFlow>
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <sequenceFlow id="flow4" sourceRef="startevent1" targetRef="goodOut"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_goodOut">
+    <bpmndi:BPMNPlane bpmnElement="goodOut" id="BPMNPlane_goodOut">
+      <bpmndi:BPMNShape bpmnElement="goodOut" id="BPMNShape_goodOut">
+        <omgdc:Bounds height="55.0" width="105.0" x="300.0" y="170.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="goodCheck" id="BPMNShape_goodCheck">
+        <omgdc:Bounds height="55.0" width="105.0" x="450.0" y="170.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="600.0" y="180.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="208.0" y="170.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="405.0" y="197.0"></omgdi:waypoint>
+        <omgdi:waypoint x="450.0" y="197.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="555.0" y="197.0"></omgdi:waypoint>
+        <omgdi:waypoint x="600.0" y="197.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="243.0" y="187.0"></omgdi:waypoint>
+        <omgdi:waypoint x="300.0" y="197.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

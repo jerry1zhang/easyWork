@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.SaleProductMapper">
+  <resultMap id="BaseResultMap" type="com.zking.pojo.SaleProduct">
+    <id column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <id column="batch_id" jdbcType="INTEGER" property="batchId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="rp_rs1" jdbcType="VARCHAR" property="rpRs1" />
+    <result column="rp_rs2" jdbcType="VARCHAR" property="rpRs2" />
+    <result column="rp_rs3" jdbcType="VARCHAR" property="rpRs3" />
+    <result column="rp_rs4" jdbcType="VARCHAR" property="rpRs4" />
+    <result column="rp_rs5" jdbcType="VARCHAR" property="rpRs5" />
+    <result column="rp_rs6" jdbcType="VARCHAR" property="rpRs6" />
+    <result column="rp_rs7" jdbcType="VARCHAR" property="rpRs7" />
+    <result column="rp_rs8" jdbcType="VARCHAR" property="rpRs8" />
+    <result column="rp_rs9" jdbcType="VARCHAR" property="rpRs9" />
+    <result column="rp_rs10" jdbcType="VARCHAR" property="rpRs10" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    shop_id, batch_id, create_time, number, rp_rs1, rp_rs2, rp_rs3, rp_rs4, rp_rs5, rp_rs6, 
+    rp_rs7, rp_rs8, rp_rs9, rp_rs10
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.zking.pojo.SaleProductKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from td_s_product
+    where shop_id = #{shopId,jdbcType=INTEGER}
+      and batch_id = #{batchId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.zking.pojo.SaleProductKey">
+    delete from td_s_product
+    where shop_id = #{shopId,jdbcType=INTEGER}
+      and batch_id = #{batchId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.SaleProduct">
+    insert into td_s_product (shop_id, batch_id, create_time, 
+      number, rp_rs1, rp_rs2, 
+      rp_rs3, rp_rs4, rp_rs5, 
+      rp_rs6, rp_rs7, rp_rs8, 
+      rp_rs9, rp_rs10)
+    values (#{shopId,jdbcType=INTEGER}, #{batchId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{number,jdbcType=INTEGER}, #{rpRs1,jdbcType=VARCHAR}, #{rpRs2,jdbcType=VARCHAR}, 
+      #{rpRs3,jdbcType=VARCHAR}, #{rpRs4,jdbcType=VARCHAR}, #{rpRs5,jdbcType=VARCHAR}, 
+      #{rpRs6,jdbcType=VARCHAR}, #{rpRs7,jdbcType=VARCHAR}, #{rpRs8,jdbcType=VARCHAR}, 
+      #{rpRs9,jdbcType=VARCHAR}, #{rpRs10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.SaleProduct">
+    insert into td_s_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="batchId != null">
+        batch_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="rpRs1 != null">
+        rp_rs1,
+      </if>
+      <if test="rpRs2 != null">
+        rp_rs2,
+      </if>
+      <if test="rpRs3 != null">
+        rp_rs3,
+      </if>
+      <if test="rpRs4 != null">
+        rp_rs4,
+      </if>
+      <if test="rpRs5 != null">
+        rp_rs5,
+      </if>
+      <if test="rpRs6 != null">
+        rp_rs6,
+      </if>
+      <if test="rpRs7 != null">
+        rp_rs7,
+      </if>
+      <if test="rpRs8 != null">
+        rp_rs8,
+      </if>
+      <if test="rpRs9 != null">
+        rp_rs9,
+      </if>
+      <if test="rpRs10 != null">
+        rp_rs10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="batchId != null">
+        #{batchId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="rpRs1 != null">
+        #{rpRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs2 != null">
+        #{rpRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs3 != null">
+        #{rpRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs4 != null">
+        #{rpRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs5 != null">
+        #{rpRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs6 != null">
+        #{rpRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs7 != null">
+        #{rpRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs8 != null">
+        #{rpRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs9 != null">
+        #{rpRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs10 != null">
+        #{rpRs10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.SaleProduct">
+    update td_s_product
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="rpRs1 != null">
+        rp_rs1 = #{rpRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs2 != null">
+        rp_rs2 = #{rpRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs3 != null">
+        rp_rs3 = #{rpRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs4 != null">
+        rp_rs4 = #{rpRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs5 != null">
+        rp_rs5 = #{rpRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs6 != null">
+        rp_rs6 = #{rpRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs7 != null">
+        rp_rs7 = #{rpRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs8 != null">
+        rp_rs8 = #{rpRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs9 != null">
+        rp_rs9 = #{rpRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="rpRs10 != null">
+        rp_rs10 = #{rpRs10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where shop_id = #{shopId,jdbcType=INTEGER}
+      and batch_id = #{batchId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.SaleProduct">
+    update td_s_product
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      number = #{number,jdbcType=INTEGER},
+      rp_rs1 = #{rpRs1,jdbcType=VARCHAR},
+      rp_rs2 = #{rpRs2,jdbcType=VARCHAR},
+      rp_rs3 = #{rpRs3,jdbcType=VARCHAR},
+      rp_rs4 = #{rpRs4,jdbcType=VARCHAR},
+      rp_rs5 = #{rpRs5,jdbcType=VARCHAR},
+      rp_rs6 = #{rpRs6,jdbcType=VARCHAR},
+      rp_rs7 = #{rpRs7,jdbcType=VARCHAR},
+      rp_rs8 = #{rpRs8,jdbcType=VARCHAR},
+      rp_rs9 = #{rpRs9,jdbcType=VARCHAR},
+      rp_rs10 = #{rpRs10,jdbcType=VARCHAR}
+    where shop_id = #{shopId,jdbcType=INTEGER}
+      and batch_id = #{batchId,jdbcType=INTEGER}
+  </update>
+</mapper>

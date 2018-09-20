@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.zking.pojo.Product">
+    <id column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_producer" jdbcType="VARCHAR" property="productProducer" />
+    <result column="product_rs1" jdbcType="VARCHAR" property="productRs1" />
+    <result column="product_rs2" jdbcType="VARCHAR" property="productRs2" />
+    <result column="product_rs3" jdbcType="VARCHAR" property="productRs3" />
+    <result column="product_rs4" jdbcType="VARCHAR" property="productRs4" />
+    <result column="product_rs5" jdbcType="VARCHAR" property="productRs5" />
+    <result column="product_rs6" jdbcType="VARCHAR" property="productRs6" />
+    <result column="product_rs7" jdbcType="VARCHAR" property="productRs7" />
+    <result column="product_rs8" jdbcType="VARCHAR" property="productRs8" />
+    <result column="product_rs9" jdbcType="VARCHAR" property="productRs9" />
+    <result column="product_rs10" jdbcType="VARCHAR" property="productRs10" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_id, product_code, product_name, product_producer, product_rs1, product_rs2, 
+    product_rs3, product_rs4, product_rs5, product_rs6, product_rs7, product_rs8, product_rs9, 
+    product_rs10
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_product
+    where product_id = #{productId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_product
+    where product_id = #{productId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.Product">
+    insert into tb_product (product_id, product_code, product_name, 
+      product_producer, product_rs1, product_rs2, 
+      product_rs3, product_rs4, product_rs5, 
+      product_rs6, product_rs7, product_rs8, 
+      product_rs9, product_rs10)
+    values (#{productId,jdbcType=INTEGER}, #{productCode,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
+      #{productProducer,jdbcType=VARCHAR}, #{productRs1,jdbcType=VARCHAR}, #{productRs2,jdbcType=VARCHAR}, 
+      #{productRs3,jdbcType=VARCHAR}, #{productRs4,jdbcType=VARCHAR}, #{productRs5,jdbcType=VARCHAR}, 
+      #{productRs6,jdbcType=VARCHAR}, #{productRs7,jdbcType=VARCHAR}, #{productRs8,jdbcType=VARCHAR}, 
+      #{productRs9,jdbcType=VARCHAR}, #{productRs10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.Product">
+    insert into tb_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productCode != null">
+        product_code,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productProducer != null">
+        product_producer,
+      </if>
+      <if test="productRs1 != null">
+        product_rs1,
+      </if>
+      <if test="productRs2 != null">
+        product_rs2,
+      </if>
+      <if test="productRs3 != null">
+        product_rs3,
+      </if>
+      <if test="productRs4 != null">
+        product_rs4,
+      </if>
+      <if test="productRs5 != null">
+        product_rs5,
+      </if>
+      <if test="productRs6 != null">
+        product_rs6,
+      </if>
+      <if test="productRs7 != null">
+        product_rs7,
+      </if>
+      <if test="productRs8 != null">
+        product_rs8,
+      </if>
+      <if test="productRs9 != null">
+        product_rs9,
+      </if>
+      <if test="productRs10 != null">
+        product_rs10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productProducer != null">
+        #{productProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs1 != null">
+        #{productRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs2 != null">
+        #{productRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs3 != null">
+        #{productRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs4 != null">
+        #{productRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs5 != null">
+        #{productRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs6 != null">
+        #{productRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs7 != null">
+        #{productRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs8 != null">
+        #{productRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs9 != null">
+        #{productRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs10 != null">
+        #{productRs10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.Product">
+    update tb_product
+    <set>
+      <if test="productCode != null">
+        product_code = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productProducer != null">
+        product_producer = #{productProducer,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs1 != null">
+        product_rs1 = #{productRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs2 != null">
+        product_rs2 = #{productRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs3 != null">
+        product_rs3 = #{productRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs4 != null">
+        product_rs4 = #{productRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs5 != null">
+        product_rs5 = #{productRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs6 != null">
+        product_rs6 = #{productRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs7 != null">
+        product_rs7 = #{productRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs8 != null">
+        product_rs8 = #{productRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs9 != null">
+        product_rs9 = #{productRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="productRs10 != null">
+        product_rs10 = #{productRs10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.Product">
+    update tb_product
+    set product_code = #{productCode,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      product_producer = #{productProducer,jdbcType=VARCHAR},
+      product_rs1 = #{productRs1,jdbcType=VARCHAR},
+      product_rs2 = #{productRs2,jdbcType=VARCHAR},
+      product_rs3 = #{productRs3,jdbcType=VARCHAR},
+      product_rs4 = #{productRs4,jdbcType=VARCHAR},
+      product_rs5 = #{productRs5,jdbcType=VARCHAR},
+      product_rs6 = #{productRs6,jdbcType=VARCHAR},
+      product_rs7 = #{productRs7,jdbcType=VARCHAR},
+      product_rs8 = #{productRs8,jdbcType=VARCHAR},
+      product_rs9 = #{productRs9,jdbcType=VARCHAR},
+      product_rs10 = #{productRs10,jdbcType=VARCHAR}
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+  <select id="productList" resultMap="BaseResultMap">
+    select
+    a.product_id, a.product_code, a.product_name, a.product_producer, a.product_rs1, (select b.producer_name from td_producer b where a.product_producer=b.producer_id) product_rs2,
+    a.product_rs3, a.product_rs4, a.product_rs5, a.product_rs6, a.product_rs7, a.product_rs8, a.product_rs9,
+    a.product_rs10
+    from tb_product a
+    <if test="rows!=0">
+      limit #{start},#{rows}
+    </if>
+  </select>
+  <select id="productPartList" resultMap="BaseResultMap">
+    select
+    a.product_id, a.product_code, a.product_name, a.product_producer, a.product_rs1, (select b.producer_name from td_producer b where a.product_producer=b.producer_id) product_rs2,
+    a.product_rs3, a.product_rs4, a.product_rs5, a.product_rs6, a.product_rs7, a.product_rs8, a.product_rs9,
+    a.product_rs10
+    from tb_product a
+    where 1=1
+    <choose>
+      <when test="selectType=='product_producer'">
+        a.product_producer in (select b.producer_id FROM td_producer b where b.producer_name like #{selectValue})
+      </when>
+      <when test="selectType!='' or selectType=null">${selectType} like #{selectValue}</when>
+    </choose>
+    <if test="rows!=0">
+      limit #{start},#{rows}
+    </if>
+  </select>
+  <select id="productListSum" resultType="java.lang.Integer">
+    select
+    sum(1)
+    from tb_product a
+    <choose>
+      <when test="selectType=='product_producer'">
+        where a.product_producer in (select b.producer_id FROM td_producer b where b.producer_name like #{selectValue})
+      </when>
+      <when test="selectType!='' or selectType=null">where ${selectType} like #{selectValue}</when>
+    </choose>
+  </select>
+</mapper>

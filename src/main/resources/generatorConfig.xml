@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+<properties resource="jdbc.properties" />
+  <context id="context1">
+  <commentGenerator> 
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 --> 
+            <property name="suppressAllComments" value="true" /> 
+        </commentGenerator>
+    <jdbcConnection connectionURL="${url}" driverClass="${driverClassName}" password="${password}" userId="${username}" />
+    <javaModelGenerator targetPackage="com.zking.pojo" targetProject="src/main/java" />
+    <sqlMapGenerator targetPackage="com.zking.dao.mapper" targetProject="src/main/java" />
+    <javaClientGenerator targetPackage="com.zking.dao" targetProject="src/main/java" type="XMLMAPPER" />
+      <table tableName="tb_r_s_repository" domainObjectName="GoodList" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+
+	
+  </context>
+</generatorConfiguration>

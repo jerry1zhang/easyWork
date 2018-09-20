@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.SaleOrderMapper">
+  <resultMap id="BaseResultMap" type="com.zking.pojo.SaleOrder">
+    <id column="batch_id" jdbcType="INTEGER" property="batchId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="money" jdbcType="VARCHAR" property="money" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="batch_rs1" jdbcType="VARCHAR" property="batchRs1" />
+    <result column="batch_rs2" jdbcType="VARCHAR" property="batchRs2" />
+    <result column="batch_rs3" jdbcType="VARCHAR" property="batchRs3" />
+    <result column="batch_rs4" jdbcType="VARCHAR" property="batchRs4" />
+    <result column="batch_rs5" jdbcType="VARCHAR" property="batchRs5" />
+    <result column="batch_rs6" jdbcType="VARCHAR" property="batchRs6" />
+    <result column="batch_rs7" jdbcType="VARCHAR" property="batchRs7" />
+    <result column="batch_rs8" jdbcType="VARCHAR" property="batchRs8" />
+    <result column="batch_rs9" jdbcType="VARCHAR" property="batchRs9" />
+    <result column="batch_rs10" jdbcType="VARCHAR" property="batchRs10" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    batch_id, product_id, create_time, number, money, order_id, shop_id, batch_rs1, batch_rs2, 
+    batch_rs3, batch_rs4, batch_rs5, batch_rs6, batch_rs7, batch_rs8, batch_rs9, batch_rs10
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from td_s_batch
+    where batch_id = #{batchId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from td_s_batch
+    where batch_id = #{batchId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.SaleOrder">
+    insert into td_s_batch (batch_id, product_id, create_time, 
+      number, money, order_id, 
+      shop_id, batch_rs1, batch_rs2, 
+      batch_rs3, batch_rs4, batch_rs5, 
+      batch_rs6, batch_rs7, batch_rs8, 
+      batch_rs9, batch_rs10)
+    values (#{batchId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{number,jdbcType=INTEGER}, #{money,jdbcType=VARCHAR}, #{orderId,jdbcType=INTEGER}, 
+      #{shopId,jdbcType=INTEGER}, #{batchRs1,jdbcType=VARCHAR}, #{batchRs2,jdbcType=VARCHAR}, 
+      #{batchRs3,jdbcType=VARCHAR}, #{batchRs4,jdbcType=VARCHAR}, #{batchRs5,jdbcType=VARCHAR}, 
+      #{batchRs6,jdbcType=VARCHAR}, #{batchRs7,jdbcType=VARCHAR}, #{batchRs8,jdbcType=VARCHAR}, 
+      #{batchRs9,jdbcType=VARCHAR}, #{batchRs10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.SaleOrder">
+    insert into td_s_batch
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="batchId != null">
+        batch_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="batchRs1 != null">
+        batch_rs1,
+      </if>
+      <if test="batchRs2 != null">
+        batch_rs2,
+      </if>
+      <if test="batchRs3 != null">
+        batch_rs3,
+      </if>
+      <if test="batchRs4 != null">
+        batch_rs4,
+      </if>
+      <if test="batchRs5 != null">
+        batch_rs5,
+      </if>
+      <if test="batchRs6 != null">
+        batch_rs6,
+      </if>
+      <if test="batchRs7 != null">
+        batch_rs7,
+      </if>
+      <if test="batchRs8 != null">
+        batch_rs8,
+      </if>
+      <if test="batchRs9 != null">
+        batch_rs9,
+      </if>
+      <if test="batchRs10 != null">
+        batch_rs10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="batchId != null">
+        #{batchId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="batchRs1 != null">
+        #{batchRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs2 != null">
+        #{batchRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs3 != null">
+        #{batchRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs4 != null">
+        #{batchRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs5 != null">
+        #{batchRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs6 != null">
+        #{batchRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs7 != null">
+        #{batchRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs8 != null">
+        #{batchRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs9 != null">
+        #{batchRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs10 != null">
+        #{batchRs10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.SaleOrder">
+    update td_s_batch
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="batchRs1 != null">
+        batch_rs1 = #{batchRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs2 != null">
+        batch_rs2 = #{batchRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs3 != null">
+        batch_rs3 = #{batchRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs4 != null">
+        batch_rs4 = #{batchRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs5 != null">
+        batch_rs5 = #{batchRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs6 != null">
+        batch_rs6 = #{batchRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs7 != null">
+        batch_rs7 = #{batchRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs8 != null">
+        batch_rs8 = #{batchRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs9 != null">
+        batch_rs9 = #{batchRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs10 != null">
+        batch_rs10 = #{batchRs10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where batch_id = #{batchId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.SaleOrder">
+    update td_s_batch
+    set product_id = #{productId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      number = #{number,jdbcType=INTEGER},
+      money = #{money,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=INTEGER},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      batch_rs1 = #{batchRs1,jdbcType=VARCHAR},
+      batch_rs2 = #{batchRs2,jdbcType=VARCHAR},
+      batch_rs3 = #{batchRs3,jdbcType=VARCHAR},
+      batch_rs4 = #{batchRs4,jdbcType=VARCHAR},
+      batch_rs5 = #{batchRs5,jdbcType=VARCHAR},
+      batch_rs6 = #{batchRs6,jdbcType=VARCHAR},
+      batch_rs7 = #{batchRs7,jdbcType=VARCHAR},
+      batch_rs8 = #{batchRs8,jdbcType=VARCHAR},
+      batch_rs9 = #{batchRs9,jdbcType=VARCHAR},
+      batch_rs10 = #{batchRs10,jdbcType=VARCHAR}
+    where batch_id = #{batchId,jdbcType=INTEGER}
+  </update>
+</mapper>

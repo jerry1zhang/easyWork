@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.RepositoryBatchMapper">
+  <resultMap id="BaseResultMap" type="com.zking.pojo.RepositoryBatch">
+    <id column="batch_id" jdbcType="VARCHAR" property="batchId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="purchase_id" jdbcType="VARCHAR" property="purchaseId" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="repository_id" jdbcType="INTEGER" property="repositoryId" />
+    <result column="batch_status" jdbcType="INTEGER" property="batchStatus" />
+    <result column="batch_rs1" jdbcType="VARCHAR" property="batchRs1" />
+    <result column="batch_rs2" jdbcType="VARCHAR" property="batchRs2" />
+    <result column="batch_rs3" jdbcType="VARCHAR" property="batchRs3" />
+    <result column="batch_rs4" jdbcType="VARCHAR" property="batchRs4" />
+    <result column="batch_rs5" jdbcType="VARCHAR" property="batchRs5" />
+    <result column="batch_rs6" jdbcType="VARCHAR" property="batchRs6" />
+    <result column="batch_rs7" jdbcType="VARCHAR" property="batchRs7" />
+    <result column="batch_rs8" jdbcType="VARCHAR" property="batchRs8" />
+    <result column="batch_rs9" jdbcType="VARCHAR" property="batchRs9" />
+    <result column="batch_rs10" jdbcType="VARCHAR" property="batchRs10" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    batch_id, product_id, create_time, number, purchase_id, order_id, repository_id, 
+    batch_status, batch_rs1, batch_rs2, batch_rs3, batch_rs4, batch_rs5, batch_rs6, batch_rs7, 
+    batch_rs8, batch_rs9, batch_rs10
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from td_r_batch
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+  </select>
+  <select id="select" parameterType="com.zking.pojo.RepositoryBatch" resultMap="BaseResultMap">
+    select
+    batch_id, product_id, create_time, number, purchase_id, order_id, repository_id,
+    batch_status, batch_rs1, batch_rs2, batch_rs3, batch_rs4, batch_rs5, batch_rs6, batch_rs7,
+    batch_rs8,(SELECT b.product_name FROM tb_product b where a.product_id = b.product_id) as batch_rs9,
+    (SELECT b.repository_name FROM tb_repository b where a.repository_id = b.repository_id) as batch_rs10
+    from td_r_batch a
+    where 1=1
+      <if test="productId != null">
+        and product_id = #{productId,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        and create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="number != null">
+        and number = #{number,jdbcType=INTEGER}
+      </if>
+      <if test="purchaseId != null">
+        and purchase_id = #{purchaseId,jdbcType=VARCHAR}
+      </if>
+      <if test="orderId != null">
+        and order_id = #{orderId,jdbcType=VARCHAR}
+      </if>
+      <if test="repositoryId != null">
+        and repository_id = #{repositoryId,jdbcType=INTEGER}
+      </if>
+      <if test="batchStatus != null">
+        and batch_status = #{batchStatus,jdbcType=INTEGER}
+      </if>
+      <if test="batchRs1 != null">
+        and batch_rs1 = #{batchRs1,jdbcType=VARCHAR}
+      </if>
+      <if test="batchRs2 != null">
+        and batch_rs2 = #{batchRs2,jdbcType=VARCHAR}
+      </if>
+      <if test="batchRs3 != null">
+        and batch_rs3 = #{batchRs3,jdbcType=VARCHAR}
+      </if>
+      <if test="batchRs4 != null">
+        and batch_rs4 = #{batchRs4,jdbcType=VARCHAR}
+      </if>
+      <if test="batchRs5 != null">
+        and batch_rs5 = #{batchRs5,jdbcType=VARCHAR}
+      </if>
+      <if test="batchRs6 != null">
+        and batch_rs6 = #{batchRs6,jdbcType=VARCHAR}
+      </if>
+      <if test="batchRs7 != null">
+        and batch_rs7 = #{batchRs7,jdbcType=VARCHAR}
+      </if>
+      <if test="batchRs8 != null">
+        and batch_rs8 = #{batchRs8,jdbcType=VARCHAR}
+      </if>
+      <if test="batchRs9 != null">
+        and batch_rs9 = #{batchRs9,jdbcType=VARCHAR}
+      </if>
+      <if test="batchRs10 != null">
+        and batch_rs10 = #{batchRs10,jdbcType=VARCHAR}
+      </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from td_r_batch
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.RepositoryBatch">
+    insert into td_r_batch (batch_id, product_id, create_time, 
+      number, purchase_id, order_id, 
+      repository_id, batch_status, batch_rs1, 
+      batch_rs2, batch_rs3, batch_rs4, 
+      batch_rs5, batch_rs6, batch_rs7, 
+      batch_rs8, batch_rs9, batch_rs10
+      )
+    values (#{batchId,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{number,jdbcType=INTEGER}, #{purchaseId,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
+      #{repositoryId,jdbcType=INTEGER}, #{batchStatus,jdbcType=INTEGER}, #{batchRs1,jdbcType=VARCHAR}, 
+      #{batchRs2,jdbcType=VARCHAR}, #{batchRs3,jdbcType=VARCHAR}, #{batchRs4,jdbcType=VARCHAR}, 
+      #{batchRs5,jdbcType=VARCHAR}, #{batchRs6,jdbcType=VARCHAR}, #{batchRs7,jdbcType=VARCHAR}, 
+      #{batchRs8,jdbcType=VARCHAR}, #{batchRs9,jdbcType=VARCHAR}, #{batchRs10,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.RepositoryBatch">
+    insert into td_r_batch
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="batchId != null">
+        batch_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="purchaseId != null">
+        purchase_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="repositoryId != null">
+        repository_id,
+      </if>
+      <if test="batchStatus != null">
+        batch_status,
+      </if>
+      <if test="batchRs1 != null">
+        batch_rs1,
+      </if>
+      <if test="batchRs2 != null">
+        batch_rs2,
+      </if>
+      <if test="batchRs3 != null">
+        batch_rs3,
+      </if>
+      <if test="batchRs4 != null">
+        batch_rs4,
+      </if>
+      <if test="batchRs5 != null">
+        batch_rs5,
+      </if>
+      <if test="batchRs6 != null">
+        batch_rs6,
+      </if>
+      <if test="batchRs7 != null">
+        batch_rs7,
+      </if>
+      <if test="batchRs8 != null">
+        batch_rs8,
+      </if>
+      <if test="batchRs9 != null">
+        batch_rs9,
+      </if>
+      <if test="batchRs10 != null">
+        batch_rs10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="batchId != null">
+        #{batchId,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseId != null">
+        #{purchaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="repositoryId != null">
+        #{repositoryId,jdbcType=INTEGER},
+      </if>
+      <if test="batchStatus != null">
+        #{batchStatus,jdbcType=INTEGER},
+      </if>
+      <if test="batchRs1 != null">
+        #{batchRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs2 != null">
+        #{batchRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs3 != null">
+        #{batchRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs4 != null">
+        #{batchRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs5 != null">
+        #{batchRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs6 != null">
+        #{batchRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs7 != null">
+        #{batchRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs8 != null">
+        #{batchRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs9 != null">
+        #{batchRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs10 != null">
+        #{batchRs10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.RepositoryBatch">
+    update td_r_batch
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseId != null">
+        purchase_id = #{purchaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="repositoryId != null">
+        repository_id = #{repositoryId,jdbcType=INTEGER},
+      </if>
+      <if test="batchStatus != null">
+        batch_status = #{batchStatus,jdbcType=INTEGER},
+      </if>
+      <if test="batchRs1 != null">
+        batch_rs1 = #{batchRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs2 != null">
+        batch_rs2 = #{batchRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs3 != null">
+        batch_rs3 = #{batchRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs4 != null">
+        batch_rs4 = #{batchRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs5 != null">
+        batch_rs5 = #{batchRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs6 != null">
+        batch_rs6 = #{batchRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs7 != null">
+        batch_rs7 = #{batchRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs8 != null">
+        batch_rs8 = #{batchRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs9 != null">
+        batch_rs9 = #{batchRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="batchRs10 != null">
+        batch_rs10 = #{batchRs10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.RepositoryBatch">
+    update td_r_batch
+    set product_id = #{productId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      number = #{number,jdbcType=INTEGER},
+      purchase_id = #{purchaseId,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      repository_id = #{repositoryId,jdbcType=INTEGER},
+      batch_status = #{batchStatus,jdbcType=INTEGER},
+      batch_rs1 = #{batchRs1,jdbcType=VARCHAR},
+      batch_rs2 = #{batchRs2,jdbcType=VARCHAR},
+      batch_rs3 = #{batchRs3,jdbcType=VARCHAR},
+      batch_rs4 = #{batchRs4,jdbcType=VARCHAR},
+      batch_rs5 = #{batchRs5,jdbcType=VARCHAR},
+      batch_rs6 = #{batchRs6,jdbcType=VARCHAR},
+      batch_rs7 = #{batchRs7,jdbcType=VARCHAR},
+      batch_rs8 = #{batchRs8,jdbcType=VARCHAR},
+      batch_rs9 = #{batchRs9,jdbcType=VARCHAR},
+      batch_rs10 = #{batchRs10,jdbcType=VARCHAR}
+    where batch_id = #{batchId,jdbcType=VARCHAR}
+  </update>
+  <select id="allList" resultMap="BaseResultMap">
+    select
+    batch_id, product_id, create_time, number, purchase_id, order_id, repository_id,
+    batch_status, batch_rs1, batch_rs2, batch_rs3, batch_rs4, batch_rs5, batch_rs6, batch_rs7,
+    batch_rs8,(SELECT b.product_name FROM tb_product b where a.product_id = b.product_id) as batch_rs9,
+    (SELECT b.repository_name FROM tb_repository b where a.repository_id = b.repository_id) as batch_rs10
+    from td_r_batch a
+    <if test="rows!=0">
+      limit #{start},#{rows}
+    </if>
+  </select>
+  <select id="partList" resultMap="BaseResultMap">
+    select
+    batch_id, product_id, create_time, number, purchase_id, order_id, repository_id,
+    batch_status, batch_rs1, batch_rs2, batch_rs3, batch_rs4, batch_rs5, batch_rs6, batch_rs7,
+    batch_rs8,(SELECT b.product_name FROM tb_product b where a.product_id = b.product_id) as batch_rs9,
+    (SELECT b.repository_name FROM tb_repository b where a.repository_id = b.repository_id) as batch_rs10
+    from td_r_batch a
+    where
+    ${selectType} like #{selectValue}
+    <if test="rows!=0">
+      limit #{start},#{rows}
+    </if>
+  </select>
+  <select id="listPage" resultType="java.lang.Integer">
+    select
+    sum(1)
+    from td_r_batch a
+    <if test="selectType!=null and selectType!=''">
+      where ${selectType} like #{selectValue}
+    </if>
+  </select>
+</mapper>

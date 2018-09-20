@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.ProducerMapper">
+  <resultMap id="BaseResultMap" type="com.zking.pojo.Producer">
+    <id column="producer_id" jdbcType="INTEGER" property="producerId" />
+    <result column="producer_name" jdbcType="VARCHAR" property="producerName" />
+    <result column="producer_address" jdbcType="VARCHAR" property="producerAddress" />
+    <result column="producer_admin" jdbcType="VARCHAR" property="producerAdmin" />
+    <result column="producer_tel" jdbcType="VARCHAR" property="producerTel" />
+    <result column="producer_rs1" jdbcType="VARCHAR" property="producerRs1" />
+    <result column="producer_rs2" jdbcType="VARCHAR" property="producerRs2" />
+    <result column="producer_rs3" jdbcType="VARCHAR" property="producerRs3" />
+    <result column="producer_rs4" jdbcType="VARCHAR" property="producerRs4" />
+    <result column="producer_rs5" jdbcType="VARCHAR" property="producerRs5" />
+    <result column="producer_rs6" jdbcType="VARCHAR" property="producerRs6" />
+    <result column="producer_rs7" jdbcType="VARCHAR" property="producerRs7" />
+    <result column="producer_rs8" jdbcType="VARCHAR" property="producerRs8" />
+    <result column="producer_rs9" jdbcType="VARCHAR" property="producerRs9" />
+    <result column="producer_rs10" jdbcType="VARCHAR" property="producerRs10" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    producer_id, producer_name, producer_address, producer_admin, producer_tel, producer_rs1, 
+    producer_rs2, producer_rs3, producer_rs4, producer_rs5, producer_rs6, producer_rs7, 
+    producer_rs8, producer_rs9, producer_rs10
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from td_producer
+    where producer_id = #{producerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from td_producer
+    where producer_id = #{producerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.Producer">
+    insert into td_producer (producer_id, producer_name, producer_address, 
+      producer_admin, producer_tel, producer_rs1, 
+      producer_rs2, producer_rs3, producer_rs4, 
+      producer_rs5, producer_rs6, producer_rs7, 
+      producer_rs8, producer_rs9, producer_rs10
+      )
+    values (#{producerId,jdbcType=INTEGER}, #{producerName,jdbcType=VARCHAR}, #{producerAddress,jdbcType=VARCHAR}, 
+      #{producerAdmin,jdbcType=VARCHAR}, #{producerTel,jdbcType=VARCHAR}, #{producerRs1,jdbcType=VARCHAR}, 
+      #{producerRs2,jdbcType=VARCHAR}, #{producerRs3,jdbcType=VARCHAR}, #{producerRs4,jdbcType=VARCHAR}, 
+      #{producerRs5,jdbcType=VARCHAR}, #{producerRs6,jdbcType=VARCHAR}, #{producerRs7,jdbcType=VARCHAR}, 
+      #{producerRs8,jdbcType=VARCHAR}, #{producerRs9,jdbcType=VARCHAR}, #{producerRs10,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.Producer">
+    insert into td_producer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="producerId != null">
+        producer_id,
+      </if>
+      <if test="producerName != null">
+        producer_name,
+      </if>
+      <if test="producerAddress != null">
+        producer_address,
+      </if>
+      <if test="producerAdmin != null">
+        producer_admin,
+      </if>
+      <if test="producerTel != null">
+        producer_tel,
+      </if>
+      <if test="producerRs1 != null">
+        producer_rs1,
+      </if>
+      <if test="producerRs2 != null">
+        producer_rs2,
+      </if>
+      <if test="producerRs3 != null">
+        producer_rs3,
+      </if>
+      <if test="producerRs4 != null">
+        producer_rs4,
+      </if>
+      <if test="producerRs5 != null">
+        producer_rs5,
+      </if>
+      <if test="producerRs6 != null">
+        producer_rs6,
+      </if>
+      <if test="producerRs7 != null">
+        producer_rs7,
+      </if>
+      <if test="producerRs8 != null">
+        producer_rs8,
+      </if>
+      <if test="producerRs9 != null">
+        producer_rs9,
+      </if>
+      <if test="producerRs10 != null">
+        producer_rs10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="producerId != null">
+        #{producerId,jdbcType=INTEGER},
+      </if>
+      <if test="producerName != null">
+        #{producerName,jdbcType=VARCHAR},
+      </if>
+      <if test="producerAddress != null">
+        #{producerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="producerAdmin != null">
+        #{producerAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="producerTel != null">
+        #{producerTel,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs1 != null">
+        #{producerRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs2 != null">
+        #{producerRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs3 != null">
+        #{producerRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs4 != null">
+        #{producerRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs5 != null">
+        #{producerRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs6 != null">
+        #{producerRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs7 != null">
+        #{producerRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs8 != null">
+        #{producerRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs9 != null">
+        #{producerRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs10 != null">
+        #{producerRs10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.Producer">
+    update td_producer
+    <set>
+      <if test="producerName != null">
+        producer_name = #{producerName,jdbcType=VARCHAR},
+      </if>
+      <if test="producerAddress != null">
+        producer_address = #{producerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="producerAdmin != null">
+        producer_admin = #{producerAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="producerTel != null">
+        producer_tel = #{producerTel,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs1 != null">
+        producer_rs1 = #{producerRs1,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs2 != null">
+        producer_rs2 = #{producerRs2,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs3 != null">
+        producer_rs3 = #{producerRs3,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs4 != null">
+        producer_rs4 = #{producerRs4,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs5 != null">
+        producer_rs5 = #{producerRs5,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs6 != null">
+        producer_rs6 = #{producerRs6,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs7 != null">
+        producer_rs7 = #{producerRs7,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs8 != null">
+        producer_rs8 = #{producerRs8,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs9 != null">
+        producer_rs9 = #{producerRs9,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRs10 != null">
+        producer_rs10 = #{producerRs10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where producer_id = #{producerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.Producer">
+    update td_producer
+    set producer_name = #{producerName,jdbcType=VARCHAR},
+      producer_address = #{producerAddress,jdbcType=VARCHAR},
+      producer_admin = #{producerAdmin,jdbcType=VARCHAR},
+      producer_tel = #{producerTel,jdbcType=VARCHAR},
+      producer_rs1 = #{producerRs1,jdbcType=VARCHAR},
+      producer_rs2 = #{producerRs2,jdbcType=VARCHAR},
+      producer_rs3 = #{producerRs3,jdbcType=VARCHAR},
+      producer_rs4 = #{producerRs4,jdbcType=VARCHAR},
+      producer_rs5 = #{producerRs5,jdbcType=VARCHAR},
+      producer_rs6 = #{producerRs6,jdbcType=VARCHAR},
+      producer_rs7 = #{producerRs7,jdbcType=VARCHAR},
+      producer_rs8 = #{producerRs8,jdbcType=VARCHAR},
+      producer_rs9 = #{producerRs9,jdbcType=VARCHAR},
+      producer_rs10 = #{producerRs10,jdbcType=VARCHAR}
+    where producer_id = #{producerId,jdbcType=INTEGER}
+  </update>
+  <select id="producerList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from td_producer
+    <if test="start!=null and start !=''">
+      limit #{start},#{rows}
+    </if>
+  </select>
+  <select id="producerPartList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from td_producer
+    where ${selectType} like #{selectValue}
+    <if test="start!=null and start !=''">
+      limit #{start},#{rows}
+    </if>
+  </select>
+  <select id="producerListSum" resultType="java.lang.Integer">
+    select
+    sum(1)
+    from td_producer
+    <if test="selectType!=null and selectType!=''">
+      where ${selectType} like #{selectValue}
+    </if>
+  </select>
+  <select id="selectByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from td_producer
+    WHERE
+    producer_name like #{producerName}
+  </select>
+</mapper>

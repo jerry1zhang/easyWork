@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.activiti.org/test" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test" id="m1525918698506" name="">
+  <process id="createGoodList" name="入库操作" isExecutable="true" activiti:candidateStarterGroups="采购,管理" isClosed="false" processType="None">
+    <startEvent id="start" name="Start" activiti:initiator="${applyuser}"></startEvent>
+    <userTask id="getGood" name="采购" activiti:assignee="${applyuser}" activiti:candidateGroups="采购,管理" activiti:dueDate="${duedate}"></userTask>
+    <sequenceFlow id="flow1" sourceRef="start" targetRef="getGood"></sequenceFlow>
+    <userTask id="goodCheck" name="入库库管进行核对" activiti:assignee="${kuguan}" activiti:candidateGroups="库管,管理" activiti:dueDate="${duedate}"></userTask>
+    <sequenceFlow id="flow2" sourceRef="getGood" targetRef="goodCheck"></sequenceFlow>
+    <endEvent id="end" name="End"></endEvent>
+    <sequenceFlow id="_4" sourceRef="goodCheck" targetRef="end"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_createGoodList">
+    <bpmndi:BPMNPlane bpmnElement="createGoodList" id="BPMNPlane_createGoodList">
+      <bpmndi:BPMNShape bpmnElement="start" id="BPMNShape_start">
+        <omgdc:Bounds height="35.0" width="35.0" x="155.0" y="180.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="getGood" id="BPMNShape_getGood">
+        <omgdc:Bounds height="55.0" width="105.0" x="235.0" y="171.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="goodCheck" id="BPMNShape_goodCheck">
+        <omgdc:Bounds height="78.0" width="125.0" x="396.0" y="160.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end" id="BPMNShape_end">
+        <omgdc:Bounds height="35.0" width="35.0" x="570.0" y="180.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="190.0" y="197.0"></omgdi:waypoint>
+        <omgdi:waypoint x="235.0" y="198.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="340.0" y="198.0"></omgdi:waypoint>
+        <omgdi:waypoint x="396.0" y="199.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_4" id="BPMNEdge__4">
+        <omgdi:waypoint x="521.0" y="199.0"></omgdi:waypoint>
+        <omgdi:waypoint x="570.0" y="197.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

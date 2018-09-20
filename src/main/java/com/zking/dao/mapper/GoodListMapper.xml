@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.GoodListMapper">
+  <resultMap id="BaseResultMap" type="com.zking.pojo.GoodList">
+    <id column="r_s_id" jdbcType="INTEGER" property="rSId" />
+    <id column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="rs1" jdbcType="VARCHAR" property="rs1" />
+    <result column="rs2" jdbcType="VARCHAR" property="rs2" />
+    <result column="rs3" jdbcType="VARCHAR" property="rs3" />
+    <result column="rs4" jdbcType="VARCHAR" property="rs4" />
+    <result column="rs5" jdbcType="VARCHAR" property="rs5" />
+    <result column="rs6" jdbcType="VARCHAR" property="rs6" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    r_s_id, product_id, number, rs1, rs2, rs3, rs4, rs5, rs6
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.zking.pojo.GoodListKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_r_s_repository
+    where r_s_id = #{rSId,jdbcType=INTEGER}
+      and product_id = #{productId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.zking.pojo.GoodListKey">
+    delete from tb_r_s_repository
+    where r_s_id = #{rSId,jdbcType=INTEGER}
+      and product_id = #{productId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.pojo.GoodList">
+    insert into tb_r_s_repository (r_s_id, product_id, number, 
+      rs1, rs2, rs3, rs4, 
+      rs5, rs6)
+    values (#{rSId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, 
+      #{rs1,jdbcType=VARCHAR}, #{rs2,jdbcType=VARCHAR}, #{rs3,jdbcType=VARCHAR}, #{rs4,jdbcType=VARCHAR}, 
+      #{rs5,jdbcType=VARCHAR}, #{rs6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.pojo.GoodList">
+    insert into tb_r_s_repository
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rSId != null">
+        r_s_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="rs1 != null">
+        rs1,
+      </if>
+      <if test="rs2 != null">
+        rs2,
+      </if>
+      <if test="rs3 != null">
+        rs3,
+      </if>
+      <if test="rs4 != null">
+        rs4,
+      </if>
+      <if test="rs5 != null">
+        rs5,
+      </if>
+      <if test="rs6 != null">
+        rs6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rSId != null">
+        #{rSId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="rs1 != null">
+        #{rs1,jdbcType=VARCHAR},
+      </if>
+      <if test="rs2 != null">
+        #{rs2,jdbcType=VARCHAR},
+      </if>
+      <if test="rs3 != null">
+        #{rs3,jdbcType=VARCHAR},
+      </if>
+      <if test="rs4 != null">
+        #{rs4,jdbcType=VARCHAR},
+      </if>
+      <if test="rs5 != null">
+        #{rs5,jdbcType=VARCHAR},
+      </if>
+      <if test="rs6 != null">
+        #{rs6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.pojo.GoodList">
+    update tb_r_s_repository
+    <set>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="rs1 != null">
+        rs1 = #{rs1,jdbcType=VARCHAR},
+      </if>
+      <if test="rs2 != null">
+        rs2 = #{rs2,jdbcType=VARCHAR},
+      </if>
+      <if test="rs3 != null">
+        rs3 = #{rs3,jdbcType=VARCHAR},
+      </if>
+      <if test="rs4 != null">
+        rs4 = #{rs4,jdbcType=VARCHAR},
+      </if>
+      <if test="rs5 != null">
+        rs5 = #{rs5,jdbcType=VARCHAR},
+      </if>
+      <if test="rs6 != null">
+        rs6 = #{rs6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where r_s_id = #{rSId,jdbcType=INTEGER}
+      and product_id = #{productId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.pojo.GoodList">
+    update tb_r_s_repository
+    set number = #{number,jdbcType=INTEGER},
+      rs1 = #{rs1,jdbcType=VARCHAR},
+      rs2 = #{rs2,jdbcType=VARCHAR},
+      rs3 = #{rs3,jdbcType=VARCHAR},
+      rs4 = #{rs4,jdbcType=VARCHAR},
+      rs5 = #{rs5,jdbcType=VARCHAR},
+      rs6 = #{rs6,jdbcType=VARCHAR}
+    where r_s_id = #{rSId,jdbcType=INTEGER}
+      and product_id = #{productId,jdbcType=INTEGER}
+  </update>
+
+  <select id="allList" resultMap="BaseResultMap">
+    select
+    r_s_id, product_id, number,
+    CASE (SELECT sum(b.repository_name) FROM tb_repository b where b.repository_id=a.r_s_id)
+      WHEN 0 THEN (SELECT b.repository_name FROM tb_repository b where b.repository_id=a.r_s_id)
+      WHEN 1 THEN (SELECT b.shop_name FROM td_shop b where b.shop_id=a.r_s_id)
+   ELSE (SELECT b.repository_name FROM tb_repository b where b.repository_id=a.r_s_id) END as rs1,
+    (SELECT CONCAT(b.product_code,'|',b.product_name) FROM tb_product b where b.product_id=a.product_id) as rs2, rs3, rs4, rs5, rs6
+    from tb_r_s_repository a
+    limit #{start},#{rows}
+  </select>
+  <select id="partList" resultMap="BaseResultMap">
+    select
+    r_s_id, product_id, number,
+    CASE (SELECT sum(b.repository_name) FROM tb_repository b where b.repository_id=a.r_s_id)
+    WHEN 0 THEN (SELECT b.repository_name FROM tb_repository b where b.repository_id=a.r_s_id)
+    WHEN 1 THEN (SELECT b.shop_name FROM td_shop b where b.shop_id=a.r_s_id)
+    ELSE (SELECT b.repository_name FROM tb_repository b where b.repository_id=a.r_s_id) END as rs1,
+    (SELECT b.product_name FROM tb_product b where b.product_id=a.product_id) as rs2, rs3, rs4, rs5, rs6
+    from tb_r_s_repository a
+    where
+    <if test="selectType!=null and selectType!=''">
+      ${selectType} like #{selectValue}
+    </if>
+    limit #{start},#{rows}
+  </select>
+  <select id="listPage" resultType="java.lang.Integer">
+    select
+    sum(1)
+    from tb_r_s_repository a
+    <if test="selectType!=null and selectType!=''">
+      where ${selectType} like #{selectValue}
+    </if>
+  </select>
+
+</mapper>
